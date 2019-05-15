@@ -1,0 +1,26 @@
+<H1>Task</H1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="taskForm.dirty && taskForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="taskForm.dirty && targetDate.invalid">Enter valid Target Date</div>
+  <div class="alert alert-warning" *ngIf="taskForm.dirty && description.invalid">Enter atleast 5 characters in Description</div>
+
+  <form (ngSubmit)="!taskForm.invalid && saveTask()" #taskForm="ngForm">
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" #description="ngModel"
+             [(ngModel)]="task.description" class="form-control"
+             name="description" required="required" minlength="5">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <input type="date" #targetDate="ngModel"
+             [ngModel]="task.targetDate | date:'yyyy-MM-dd' "
+             (ngModelChange)="task.targetDate = $event"
+             class="form-control" name="targetDate" required="required" >
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>

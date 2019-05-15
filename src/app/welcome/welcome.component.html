@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Welcome {{name}}. You can manage your tasks <a routerLink="/tasks/user/{{name}}">here</a></h1>
+  <div>
+    Click here to get a customized message
+    <button (click)="getWelcomeMessage()" (keypress)="getWelcomeMessage()" class="btn btn-info">Get Welcome Message</button>
+  </div>
+  <div *ngIf="messageFromService">
+    <h2>Your customized message</h2>
+    {{messageFromService}}
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<h1>Sign up!</h1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="invalidSignup">{{errorMessage}}</div>
+  <div class="alert alert-success" *ngIf="signUpSuccess">{{successMessage}}</div>
+
+  <div (keyup.enter)="handleSignup()">
+    <label>User Name: </label>
+    <input type="text" name="username" [(ngModel)]="username">
+
+    <label>Password: </label>
+    <input type="password" name="password" [(ngModel)]="password">
+
+    <button (click)="handleSignup()" class="btn btn-success">Sign Up</button>
+  </div>
+</div>
