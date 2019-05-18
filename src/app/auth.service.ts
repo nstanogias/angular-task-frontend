@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/internal/operators';
-import {API_URL} from './app.constants';
 
 export const TOKEN = 'token';
 export const AUTHENTICATED_USER = 'authenticatedUser';
@@ -13,7 +12,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
   handleLogin(username, password) {
-    return this.http.post<any>(`${API_URL}/auth/login`, {
+    return this.http.post<any>('/auth/login', {
       username, password
     }).pipe(
       map(
@@ -27,7 +26,7 @@ export class AuthService {
     );
   }
   handleSignup(username, password) {
-    return this.http.post(`${API_URL}/auth/register`, {
+    return this.http.post('/auth/register', {
       username, password
     }).pipe(
       map(
